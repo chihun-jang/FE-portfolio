@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>slide 만들기(+indicator 포함)</title>
+
+    <link rel="stylesheet" href="slider.css">
+</head>
+<body>
+
+
+    <div class="rv_slide_box">
+        
+        <div class="rv_img_box rv_img_box_1 rv_slide_show">
+            <div class="rv_prev_btn" onclick="pre(1)"><img src="slider_arrow_L.png"></div>
+                <img class="rv_slide_img" id="img1"
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT7FrL2FwjHEq4DmgDD2LgkFhC8xYrCE4RJ30CQnLPnfUuKxNxI&usqp=CAU">
+            <div class="rv_next_btn" onclick="next(1)"><img src="slider_arrow_R.png"></div>
+        </div>
+
+        <div class="rv_img_box rv_img_box_2" >
+            <div class="rv_prev_btn" onclick="pre(2)"><img src="slider_arrow_L.png"></div>
+                <img class="rv_slide_img" id="img2" 
+                src="https://scontent-lga3-1.cdninstagram.com/v/t51.2885-15/sh0.08/e35/s640x640/46265855_959802120878217_2254256389666701657_n.jpg?_nc_ht=scontent-lga3-1.cdninstagram.com&_nc_cat=109&_nc_ohc=Hm8TFOoOVscAX86j_2F&oh=f74d2ab67fc1580d6911077360e74d29&oe=5ECAF0F8">
+            <div class="rv_next_btn" onclick="next(2)"><img src="slider_arrow_R.png"></div>
+        </div>
+
+      
+        <div class="indicator_box">
+            <span id="img_indi_1" class="indicator choice_indicator" onclick="go_img(1)"> </span>
+            <span id="img_indi_2" class="indicator" onclick="go_img(2)"> </span>
+        </div>
+    </div>
+</body>
+
+
+<script>
+          function pre(img_num) {
+                tmp_img_box = this.event.target.parentNode.previousSibling.previousSibling
+
+                try {
+                    if (tmp_img_box.className !== "indicator_box") {
+                        tmp_img_box.className = "rv_img_box rv_slide_show"
+
+
+                        this.event.target.parentNode.className = "rv_img_box"
+
+
+                        //indicator 동작
+                        temp_indi = document.querySelectorAll('.indicator')
+                        Array.from(temp_indi).forEach(item => {
+                            item.className = "indicator"
+                        })
+
+                        document.getElementById('img_indi_' + tmp_img_box.childNodes[3].id.substr(3)).classList.add('choice_indicator')
+
+                    }
+                }
+                catch{
+
+                }
+
+            }
+            function next(img_num) {
+
+                tmp_img_box = this.event.target.parentNode.nextSibling.nextSibling
+
+                try {
+                    if (tmp_img_box.className !== "indicator_box") {
+
+                        tmp_img_box.className = "rv_img_box rv_slide_show"
+                        this.event.target.parentNode.className = "rv_img_box"
+
+                        //인디케이터 동작
+                        temp_indi = document.querySelectorAll('.indicator')
+                        Array.from(temp_indi).forEach(item => {
+                            item.className = "indicator"
+                        })
+                        document.getElementById('img_indi_' + tmp_img_box.childNodes[3].id.substr(3)).classList.add('choice_indicator')
+
+                    }
+                }
+                catch{
+
+                }
+
+
+            }
+            function go_img(img_num) {
+                
+                try {
+                    temp_list = document.querySelectorAll('.rv_img_box')
+
+                    let set_num = 1
+                    Array.from(temp_list).forEach(item => {
+                        item.className = "rv_img_box rv_img_box_" + set_num
+                        set_num++
+                    });
+
+                    temp_indi = document.querySelectorAll('.indicator')
+                    Array.from(temp_indi).forEach(item => {
+                        item.className = "indicator"
+                    })
+
+
+                    document.querySelector('.rv_img_box_' + img_num).classList.add('rv_slide_show')
+                    this.event.target.classList.add('choice_indicator')
+                }
+
+                catch{
+
+                }
+
+
+            }
+</script>
+</html>
