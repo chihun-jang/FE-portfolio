@@ -1,0 +1,40 @@
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 500px;
+    flex-direction: column;
+}
+
+form{
+    max-width:400px;
+}
+
+.tags_item{
+    display: inline-block;
+    border:1.5px solid #777;
+    border-radius: 10px;
+
+    color:#777;
+    font-weight: bold;
+
+    padding:5px 10px;
+    margin:2px;
+    
+    cursor: pointer;
+    float:left;
+}
+.tags_form{
+    border:1.5px solid #777;
+    border-radius: 10px;
+    padding:10px 10px;
+    box-sizing: border-box;
+    color: #777;
+    outline: none;
+    float:left;
+    width:50px;
+}
+#text_width_cal{
+    font-size:13.4px;
+    visibility: hidden;
+}
