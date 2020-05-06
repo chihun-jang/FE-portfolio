@@ -10,11 +10,9 @@ function prevent_submit(e){
 }
 
 function tag_make(e) {
-    // console.log(this.value)
     text_len = document.getElementById('text_width_cal')
     text_len.innerHTML = e.target.value
-    console.log(text_len.offsetWidth)
-    // this.style.width = 13.3 *(e.target.value.length+3)+'px'
+    
     this.style.width = (text_len.offsetWidth+30)+'px'
     if (e.key === 'Enter' || e.key === ' ' ) {
         
@@ -35,17 +33,15 @@ function tag_make(e) {
         if (e.target.value===""){
             let del_node = e.target.parentNode.previousSibling.previousSibling.lastChild
            
-            if (del_node) {
                 if (del_node.childNodes.length !== 0 ) {
                     let del_text = (del_node.childNodes[1].value)
                     let index = CHECK_LIST.indexOf(del_text);
                     if (index !== -1) CHECK_LIST.splice(index, 1);
+                    del_node.remove()
+                    this.style.width = 90 + 'px'
                 }
-
-                del_node.remove()
-                }
+  
             }
-        this.style.width = 90 + 'px'
         }
 }
 
