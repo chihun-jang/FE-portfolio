@@ -21,18 +21,19 @@ function tag_make(e) {
         if (e.target.value !== "" && (CHECK_LIST.indexOf(e.target.value) === -1  ) ){
             CHECK_LIST.push(e.target.value)
             
-            document.getElementById('tags_area').innerHTML += 
-            '<div onclick="del_item()" class="tags_item">'+ e.target.value + 
-                '<input type="hidden" name="' + e.target.value + '" value="' + e.target.value+'"> ✖'
+            document.getElementById('tags_area').innerHTML +=
+            '<div onclick="del_item()" class="tags_item"># ' + e.target.value +
+                '<input type="hidden" name="' + e.target.value + '" value="' + e.target.value + '"> &nbsp&nbsp&nbspX '
             '</div>'
         }
         e.target.value=""
         e.preventDefault()
         document.getElementById('review_tags').addEventListener('keydown', tag_make)
+        this.style.width = 90 + 'px'
     }
     if (e.key ==='Backspace'){
         if (e.target.value===""){
-            let del_node = e.target.previousSibling.previousSibling.lastChild
+            let del_node = e.target.parentNode.previousSibling.previousSibling.lastChild
            
             if (del_node) {
                 if (del_node.childNodes.length !== 0 ) {
@@ -44,7 +45,7 @@ function tag_make(e) {
                 del_node.remove()
                 }
             }
-
+        this.style.width = 90 + 'px'
         }
 }
 

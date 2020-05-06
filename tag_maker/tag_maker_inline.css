@@ -6,35 +6,55 @@ body{
     flex-direction: column;
 }
 
-form{
-    max-width:400px;
-}
 
+/*태그 부분 구성요소 */
+.tags_container{
+    width:400px;
+
+}
 .tags_item{
     display: inline-block;
     border:1.5px solid #777;
     border-radius: 10px;
 
-    color:#777;
-    font-weight: bold;
 
     padding:5px 10px;
     margin:2px;
-    
+
+    color:#777;
+    font-weight: bold;
+
     cursor: pointer;
-    float:left;
 }
 .tags_form{
+    outline: none;
+    padding:8px 20px;
+    box-sizing: border-box;
+    
+    
+
     border:1.5px solid #777;
     border-radius: 10px;
-    padding:10px 10px;
-    box-sizing: border-box;
     color: #777;
-    outline: none;
-    float:left;
-    width:50px;
+    width:90px;
+    min-width: 90px;
+    max-width:100%;
 }
 #text_width_cal{
     font-size:13.4px;
     visibility: hidden;
+}
+
+.tags_input_box{
+    position: relative;
+    display: inline-block;
+    max-width:100%;
+    
+}
+.tags_sharp{
+    color: #777;
+
+    position: absolute; 
+    left:10px;
+    top:6px;
 }
