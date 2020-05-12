@@ -7,8 +7,13 @@ mysubnav = document.querySelectorAll('.nav-subcontainer')
 
 pre_circle = document.querySelectorAll('.nav-subitem-circle')
 
+mymus = window.addEventListener('mousemove', remove_nav)
+
+FLAG = 0
+
 Array.from(myitems).map((item)=>{
     item.addEventListener('mouseover', move_line)
+
 })
 
 Array.from(mysubitems).map((item)=>{
@@ -29,6 +34,8 @@ function move_line(){
     this.parentNode.lastChild.previousSibling.style.width = this.offsetWidth + 'px';
     this.parentNode.lastChild.previousSibling.style.height = this.offsetHeight+18 + 'px';
     document.querySelector('.nav-item-underline-triangle').style.display = "inline-block" ;
+    FLAG = 1
+
 }
 
 function move_circle(){
@@ -37,6 +44,23 @@ function move_circle(){
     this.parentNode.lastChild.previousSibling.style.width = this.offsetWidth + 'px';
     this.parentNode.lastChild.previousSibling.style.height = this.offsetHeight + 'px';
 
-    console.log(this.parentNode.lastChild.previousSibling)
-    console.log(this.offsetLeft )
+   
+    FLAG = 1
+
+}
+
+function remove_nav(){
+    mus_loca = this.event.target.classList
+    if ((mus_loca.toString()).indexOf('nav') === -1 && FLAG === 1){
+        Array.from(mysubnav).map((item) => {
+            item.style.opacity = 0
+        })
+        Array.from(pre_circle).map((item) => {
+            item.style.width = '0px'
+            item.style.height = '0px'
+        })
+        document.querySelector('.nav-item-underline-triangle').style.display = "none";
+        document.querySelector('.nav-item-underline').style.width = '0px'
+        FLAG = 0
+    }
 }
