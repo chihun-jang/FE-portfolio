@@ -6,13 +6,12 @@ Array.from(STAR_ITEMS).map((item) =>
 Array.from(STAR_ITEMS).map((item) =>
   item.addEventListener("dragend", dragingStar)
 );
-
 Array.from(STAR_ITEMS).map((item) =>
   item.addEventListener("touchend", touchStar)
 );
 
 function markingStar(e) {
-  if (e.offsetX <= 50) {
+  if (e.offsetX <= e.target.width / 2) {
     console.log("왼쪽");
   } else {
     console.log("오른쪽");
@@ -24,7 +23,7 @@ function markingStar(e) {
   let remain_idx;
   while (idx <= click_star) {
     if (idx === click_star) {
-      if (e.offsetX <= 50) {
+      if (e.offsetX <= e.target.width / 2) {
         console.log("반");
         document.querySelector(`#star${idx}`).src = "half.png";
       } else {
@@ -44,21 +43,21 @@ function markingStar(e) {
 }
 
 function dragingStar(e) {
-  if (e.offsetX <= 50) {
+  if (e.offsetX <= e.target.width / 2) {
     console.log("왼쪽");
   } else {
     console.log("오른쪽");
   }
   console.log(
     e.pageX - e.target.parentNode.offsetLeft,
-    Math.ceil(e.pageX / 50),
+    Math.ceil(e.pageX / (e.target.width / 2)),
     "별 몇개?"
   );
   const cursor_end = e.pageX - e.target.parentNode.offsetLeft;
   console.log(cursor_end, "워우어어어어", e.target.parentNode.offsetLeft);
-  const half = Math.ceil(cursor_end / 50) % 2 === 1;
+  const half = Math.ceil(cursor_end / (e.target.width / 2)) % 2 === 1;
   //   const click_star = parseInt(this.id.substring(4));
-  const drag_star = parseInt(Math.ceil(cursor_end / 50) / 2);
+  const drag_star = parseInt(Math.ceil(cursor_end / (e.target.width / 2)) / 2);
   //   console.log(drag_star, "반 색칠?", half);
   let idx = 1;
   let remain_idx;
@@ -90,19 +89,19 @@ function dragingStar(e) {
 }
 
 function touchStar(e) {
-  if (e.offsetX <= 50) {
+  if (e.offsetX <= e.target.width / 2) {
     console.log("왼쪽");
   } else {
     console.log("오른쪽");
   }
-  //   console.log(e.offsetX, Math.ceil(e.offsetX / 50), "별 몇개?");
+  //   console.log(e.offsetX, Math.ceil(e.offsetX / (e.target.width/2)), "별 몇개?");
   const cursor_end =
     e["changedTouches"][0]["pageX"] - e.target.parentNode.offsetLeft;
 
   console.log("짜자자라라란", e["changedTouches"][0]["pageX"]);
-  const half = Math.ceil(cursor_end / 50) % 2 === 1;
+  const half = Math.ceil(cursor_end / (e.target.width / 2)) % 2 === 1;
   //   const click_star = parseInt(this.id.substring(4));
-  const drag_star = parseInt(Math.ceil(cursor_end / 50) / 2);
+  const drag_star = parseInt(Math.ceil(cursor_end / (e.target.width / 2)) / 2);
   console.log(cursor_end, "이거 계산해줘요");
   let idx = 1;
   let remain_idx;
