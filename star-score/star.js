@@ -1,4 +1,5 @@
 const STAR_ITEMS = document.querySelectorAll(".star-box > img");
+const SET_SCORE = document.querySelector("#star-score");
 
 // 클릭이벤트
 Array.from(STAR_ITEMS).map((item) =>
@@ -37,6 +38,7 @@ function markingStar(e) {
     document.querySelector(`#star${remain_idx}`).src = "empty.png";
     remain_idx++;
   }
+  checkScore();
 }
 
 function dragingStar(e) {
@@ -67,6 +69,7 @@ function dragingStar(e) {
     document.querySelector(`#star${remain_idx}`).src = "empty.png";
     remain_idx++;
   }
+  checkScore();
 }
 
 function touchStar(e) {
@@ -98,4 +101,31 @@ function touchStar(e) {
     document.querySelector(`#star${remain_idx}`).src = "empty.png";
     remain_idx++;
   }
+
+  checkScore();
+}
+//optional
+function checkScore() {
+  let score = 0;
+  Array.from(STAR_ITEMS).map((item) => {
+    const ImageSrcIndex = item.src.indexOf(".png");
+    const checkScoreFlag = item.src.substring(ImageSrcIndex - 1, ImageSrcIndex);
+
+    switch (checkScoreFlag) {
+      case "y":
+        score = score + 0;
+        break;
+      case "f":
+        score = score + 0.5;
+        break;
+
+      case "l":
+        score = score + 1;
+        break;
+
+      default:
+    }
+  });
+
+  SET_SCORE.value = score;
 }
