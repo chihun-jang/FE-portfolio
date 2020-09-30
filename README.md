@@ -36,7 +36,7 @@ Global Nav인데 Sub-Nav까지 아래에 표시가 되고 hover시 약간의 효
 - 엔터로 작성
 - 스페이스로 작성
 
-![Tag-maker](./introduce/tag-maker.png.png)
+![Tag-maker](./introduce/tag-maker.png)
 
 ### ETC
 
