@@ -41,3 +41,7 @@ Global Nav인데 Sub-Nav까지 아래에 표시가 되고 hover시 약간의 효
 ### ETC
 
 - WebStorage 연습
+
+## 다음으로 만들것
+
+- 스피커 음량 조절시 대포발사 하는 모양 animation구현
